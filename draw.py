@@ -155,7 +155,7 @@ def generate_sphere( cx, cy, cz, r, step ):
 def add_torus(polygons, cx, cy, cz, r0, r1, step ):
     points = generate_torus(cx, cy, cz, r0, r1, step)
 
-    for j in range(len(points) - 1):
+    for j in range(len(points ) - 1):
         add_polygon(polygons,
 
                     points[j][0],
