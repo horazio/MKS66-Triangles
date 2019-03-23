@@ -210,7 +210,7 @@ def generate_torus( cx, cy, cz, r0, r1, step ):
     rot_start = 0
     rot_stop = step
     circ_start = 0
-    circ_stop = step
+    circ_stop = step + 1
 
     for rotation in range(rot_start, rot_stop):
         rot = rotation/float(step)
