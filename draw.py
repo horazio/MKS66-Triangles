@@ -2,6 +2,18 @@ from display import *
 from matrix import *
 
 
+def cull(x0, y0, z0, x1, y1, z1, x2, y2, z2):
+    #only works for viewing vector <0, 0, 1>
+    X0 = x1 - x0
+    Y0 = y1 - y0
+
+    X1 = x2 - x0
+    Y1 = y2 - y0
+
+    return (X0 * Y1 - Y0 * X1) > 0
+
+
+    Z1 = z2 - z0
 def add_polygon( polygons, x0, y0, z0, x1, y1, z1, x2, y2, z2 ):
     add_point(polygons, x0, y0, z0)
     add_point(polygons, x1, y1, z1)
@@ -15,21 +27,31 @@ def draw_polygons( polygons, screen, color ):
 
     point = 0
     while point < len(polygons) - 2:
-        draw_line( int(polygons[point][0]),
-                   int(polygons[point][1]),
-                   int(polygons[point+1][0]),
-                   int(polygons[point+1][1]),
-                   screen, color)
-        draw_line( int(polygons[point][0]),
-                   int(polygons[point][1]),
-                   int(polygons[point+2][0]),
-                   int(polygons[point+2][1]),
-                   screen, color)
-        draw_line( int(polygons[point+1][0]),
-                   int(polygons[point+1][1]),
-                   int(polygons[point+2][0]),
-                   int(polygons[point+2][1]),
-                   screen, color)
+        if(cull(polygons[point][0],
+                polygons[point][1],
+                polygons[point][2],
+                polygons[point + 1][0],
+                polygons[point + 1][1],
+                polygons[point + 1][2],
+                polygons[point + 2][0],
+                polygons[point + 2][1],
+                polygons[point + 2][2])):
+
+            draw_line( int(polygons[point][0]),
+                       int(polygons[point][1]),
+                       int(polygons[point+1][0]),
+                       int(polygons[point+1][1]),
+                       screen, color)
+            draw_line( int(polygons[point][0]),
+                       int(polygons[point][1]),
+                       int(polygons[point+2][0]),
+                       int(polygons[point+2][1]),
+                       screen, color)
+            draw_line( int(polygons[point+1][0]),
+                       int(polygons[point+1][1]),
+                       int(polygons[point+2][0]),
+                       int(polygons[point+2][1]),
+                       screen, color)
         point+= 3
 
 
@@ -99,7 +121,7 @@ def add_sphere(polygons, cx, cy, cz, r, step ):
                     )
         add_polygon(polygons,
 
-                    points[j][0],
+                    points[j][0],    Z1 = z2 - z0
                     points[j][1],
                     points[j][2],
 
