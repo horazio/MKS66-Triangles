@@ -1,7 +1,6 @@
 from display import *
 from matrix import *
 
-
 def cull(x0, y0, z0, x1, y1, z1, x2, y2, z2):
     #only works for viewing vector <0, 0, 1>
     X0 = x1 - x0
@@ -27,7 +26,7 @@ def draw_polygons( polygons, screen, color ):
 
     point = 0
     while point < len(polygons) - 2:
-        if(cull(polygons[point][0],
+        if( cull(polygons[point][0],
                 polygons[point][1],
                 polygons[point][2],
                 polygons[point + 1][0],
@@ -35,7 +34,7 @@ def draw_polygons( polygons, screen, color ):
                 polygons[point + 1][2],
                 polygons[point + 2][0],
                 polygons[point + 2][1],
-                polygons[point + 2][2])):
+                polygons[point + 2][2]) ):
 
             draw_line( int(polygons[point][0]),
                        int(polygons[point][1]),
@@ -119,19 +118,20 @@ def add_sphere(polygons, cx, cy, cz, r, step ):
                     points[(j + step + 1) % len(points)][1],
                     points[(j + step + 1) % len(points)][2],
                     )
+
         add_polygon(polygons,
 
-                    points[j][0],    Z1 = z2 - z0
+                    points[j][0],
                     points[j][1],
                     points[j][2],
-
-                    points[(j + step) % len(points)][0],
-                    points[(j + step) % len(points)][1],
-                    points[(j + step) % len(points)][2],
 
                     points[(j + step + 1) % len(points)][0],
                     points[(j + step + 1) % len(points)][1],
                     points[(j + step + 1) % len(points)][2],
+
+                    points[(j + step) % len(points)][0],
+                    points[(j + step) % len(points)][1],
+                    points[(j + step) % len(points)][2],
                     )
 
 '''
@@ -198,13 +198,13 @@ def add_torus(polygons, cx, cy, cz, r0, r1, step ):
                     points[j][1],
                     points[j][2],
 
-                    points[(j + step) % len(points)][0],
-                    points[(j + step) % len(points)][1],
-                    points[(j + step) % len(points)][2],
-
                     points[(j + step + 1) % len(points)][0],
                     points[(j + step + 1) % len(points)][1],
                     points[(j + step + 1) % len(points)][2],
+
+                    points[(j + step) % len(points)][0],
+                    points[(j + step) % len(points)][1],
+                    points[(j + step) % len(points)][2],
                     )
 
 
