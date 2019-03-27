@@ -104,35 +104,38 @@ def add_sphere(polygons, cx, cy, cz, r, step ):
     points = generate_sphere(cx, cy, cz, r, step)
 
     for j in range(len(points) - 1):
-        add_polygon(polygons,
 
-                    points[j][0],
-                    points[j][1],
-                    points[j][2],
+        if(True):
+            add_polygon(polygons,
 
-                    points[j + 1][0],
-                    points[j + 1][1],
-                    points[j + 1][2],
+                        points[j][0],
+                        points[j][1],
+                        points[j][2],
 
-                    points[(j + step + 1) % len(points)][0],
-                    points[(j + step + 1) % len(points)][1],
-                    points[(j + step + 1) % len(points)][2],
-                    )
+                        points[j + 1][0],
+                        points[j + 1][1],
+                        points[j + 1][2],
 
-        add_polygon(polygons,
+                        points[(j + step + 1) % len(points)][0],
+                        points[(j + step + 1) % len(points)][1],
+                        points[(j + step + 1) % len(points)][2],
+                        )
 
-                    points[j][0],
-                    points[j][1],
-                    points[j][2],
 
-                    points[(j + step + 1) % len(points)][0],
-                    points[(j + step + 1) % len(points)][1],
-                    points[(j + step + 1) % len(points)][2],
+            add_polygon(polygons,
 
-                    points[(j + step) % len(points)][0],
-                    points[(j + step) % len(points)][1],
-                    points[(j + step) % len(points)][2],
-                    )
+                        points[j][0],
+                        points[j][1],
+                        points[j][2],
+
+                        points[(j + step + 1) % len(points)][0],
+                        points[(j + step + 1) % len(points)][1],
+                        points[(j + step + 1) % len(points)][2],
+
+                        points[(j + step) % len(points)][0],
+                        points[(j + step) % len(points)][1],
+                        points[(j + step) % len(points)][2],
+                        )
 
 '''
     lat_start = 0
