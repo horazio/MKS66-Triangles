@@ -67,7 +67,7 @@ display
 #clear the edge matrix, test torus
 clear
 torus
-0 0 0 100 150
+0 0 0 80 100
 display
 #save
 #6.png

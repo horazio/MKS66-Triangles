@@ -103,9 +103,9 @@ def add_box( polygons, x, y, z, width, height, depth ):
 def add_sphere(polygons, cx, cy, cz, r, step ):
     points = generate_sphere(cx, cy, cz, r, step)
 
-    for j in range(len(points) - 1):
+    for j in range(len(points)):
+        if(j %  (step + 1) != 0 and (j + 1) % (step + 1) != 0):
 
-        if(True):
             add_polygon(polygons,
 
                         points[j][0],
@@ -122,20 +122,20 @@ def add_sphere(polygons, cx, cy, cz, r, step ):
                         )
 
 
-            add_polygon(polygons,
+        add_polygon(polygons,
 
-                        points[j][0],
-                        points[j][1],
-                        points[j][2],
+                    points[j][0],
+                    points[j][1],
+                    points[j][2],
 
-                        points[(j + step + 1) % len(points)][0],
-                        points[(j + step + 1) % len(points)][1],
-                        points[(j + step + 1) % len(points)][2],
+                    points[(j + step + 1) % len(points)][0],
+                    points[(j + step + 1) % len(points)][1],
+                    points[(j + step + 1) % len(points)][2],
 
-                        points[(j + step) % len(points)][0],
-                        points[(j + step) % len(points)][1],
-                        points[(j + step) % len(points)][2],
-                        )
+                    points[(j + step) % len(points)][0],
+                    points[(j + step) % len(points)][1],
+                    points[(j + step) % len(points)][2],
+                    )
 
 '''
     lat_start = 0
@@ -180,21 +180,22 @@ def generate_sphere( cx, cy, cz, r, step ):
 def add_torus(polygons, cx, cy, cz, r0, r1, step ):
     points = generate_torus(cx, cy, cz, r0, r1, step)
 
-    for j in range(len(points ) - 1):
+    for j in range(len(points)):
         add_polygon(polygons,
 
                     points[j][0],
                     points[j][1],
                     points[j][2],
 
-                    points[j + 1][0],
-                    points[j + 1][1],
-                    points[j + 1][2],
+                    points[(j + 1) % len(points)][0],
+                    points[(j + 1) % len(points)][1],
+                    points[(j + 1) % len(points)][2],
 
                     points[(j + step + 1) % len(points)][0],
                     points[(j + step + 1) % len(points)][1],
                     points[(j + step + 1) % len(points)][2],
                     )
+
         add_polygon(polygons,
 
                     points[j][0],
